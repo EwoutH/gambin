@@ -13,7 +13,7 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
       - name: Install package dependencies
         run: | 
-          Rscript -e install.packages(c("remotes", "covr"))
+          Rscript -e 'install.packages(c("remotes", "covr"))'
           Rscript -e 'remotes::install_deps(dependencies = TRUE)'
       - run: Rscript build .
         shell: cmd
