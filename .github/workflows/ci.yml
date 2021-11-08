@@ -13,9 +13,10 @@ jobs:
       - uses: r-lib/actions/setup-r@v1
       - name: Install package dependencies
         run: | 
-          Rscript -e 'install.packages("remotes")'
-          Rscript -e 'install.packages("covr")'
+          Rscript -e install.packages(c("remotes", "covr"))
           Rscript -e 'remotes::install_deps(dependencies = TRUE)'
-      - run: Rscript CMD build .
-      - run: Rscript CMD check *tar.gz --no-manual
+      - run: Rscript build .
+        shell: pwsh
+      - run: Rscript check *tar.gz --no-manual
+        shell: pwsh
       - run: Rscript -e 'covr::codecov()'
