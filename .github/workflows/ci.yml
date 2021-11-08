@@ -16,7 +16,7 @@ jobs:
           Rscript -e install.packages(c("remotes", "covr"))
           Rscript -e 'remotes::install_deps(dependencies = TRUE)'
       - run: Rscript build .
-        shell: pwsh
+        shell: cmd
       - run: Rscript check *tar.gz --no-manual
-        shell: pwsh
+        shell: cmd
       - run: Rscript -e 'covr::codecov()'
